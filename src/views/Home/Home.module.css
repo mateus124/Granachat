@@ -37,6 +37,13 @@
 .lista > li > a {
     text-decoration: none;
     color: #fff;
+    transition: .3s;
+}
+
+.lista > li > a:hover {
+    color: #7311D4;
+    border-bottom: 1px solid #7311D4;
+    padding-bottom: 2px;
 }
 
 .buttons {
@@ -50,12 +57,24 @@
     color: #fff;
     font-size: 1.2rem;
     font-weight: 600;
+    transition: .3s;
+}
+
+.buttons a:nth-child(1):hover {
+    color: #7311D4;
+    transition: .3s;
 }
 
 .buttons a:nth-child(2) {
     background-color: #7311D4;
     padding: 10px 15px;
     border-radius: 8px;
+}
+
+.buttons a:nth-child(2):hover, .left a:nth-child(1):hover {
+    background-color: #5f0faf;
+    color: #e6e6e6;
+    transition: .3s;
 }
 
 .hamburger {
@@ -72,6 +91,74 @@
 
 .nav {
     display: flex;
+}
+
+.main {
+    display: flex;
+    padding: 20px 50px;
+    padding-right: 0px;
+}
+
+.left {
+    max-width: 50vw;
+}
+
+.left h1 {
+    font-size: 5rem;
+    max-width: 80%;
+    font-weight: 800;
+}
+
+.left h1 span {
+    color: #7311D4;
+}
+
+.left p {
+    max-width: 80%;
+    font-size: 1.3rem;
+    color: #94A3B8;
+    margin-top: -30px;
+}
+
+.buttonshero {
+    display: flex;
+    column-gap: 30px;
+}
+
+.buttonshero a {
+    padding: 15px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.buttonshero a:nth-child(1) {
+    background-color: #7311D4;
+}
+
+.buttonshero a:nth-child(2) {
+    background-color: #1E293B;
+    column-gap: 5px;
+}
+
+.buttonshero a:nth-child(2):hover {
+    background-color: #273448;
+}
+
+.right {
+    width: 40vw;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.right img {
+    width: 100%;
 }
 
 @media (max-width: 1200px) {
