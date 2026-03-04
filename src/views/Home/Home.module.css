@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 2rem;
+    user-select: none;
+}
+
+.logo > p {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.icon {
+    background-color: #7311D4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.lista {
+    display: flex;
+    list-style: none;
+    column-gap: 50px;
+    font-size: 1.1rem;
+}
+
+.lista > li > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.buttons {
+    display: flex;
+    column-gap: 30px;
+    align-items: center;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.buttons a:nth-child(2) {
+    background-color: #7311D4;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
