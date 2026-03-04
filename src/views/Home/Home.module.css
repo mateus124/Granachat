@@ -57,3 +57,89 @@
     padding: 10px 15px;
     border-radius: 8px;
 }
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav {
+    display: flex;
+}
+
+@media (max-width: 1200px) {
+    .header {
+        padding: 20px 30px;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 2;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 20px 30px;
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    .navActive {
+        display: flex;
+    }
+
+    .navActive ~ .buttons {
+        display: flex;
+        position: absolute;
+        top: 200px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        padding: 20px 30px;
+        row-gap: 15px;
+        z-index: 1;
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    .buttons a {
+        font-size: 1rem;
+    }
+
+    .lista {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .lista {
+        font-size: 0.9rem;
+    }
+}
