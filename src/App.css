@@ -5,3 +5,12 @@ body {
     color: #fff;
     font-family: "Inter", sans-serif;
 }
+main {
+    flex-grow: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #94A3B8;
+}
