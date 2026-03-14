@@ -1,6 +1,6 @@
 .headerlogin {
     display: flex;
-    padding: 0px 50px;
+    padding: 30px 50px;
     justify-content: space-between;
     align-items: center;
 }
@@ -41,7 +41,6 @@
 
 .title > p {
     color: rgb(115, 17, 212, 0.7);
-    margin-top: -15px;
 }
 
 .title {
