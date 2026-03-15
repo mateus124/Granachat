@@ -1,5 +1,6 @@
-import Menu from '../../components/Menu/Menu'
-import styles from './Dashboard.module.css'
+import Menu from '../../components/Menu/Menu';
+import CardSalary from '../../components/CardSalary/CardSalary';
+import styles from './Dashboard.module.css';
 import { IoMdNotifications } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
@@ -14,6 +15,9 @@ const Dashboard = () => {
                         <IoMdNotifications size={26} />
                         <CgProfile size={26} />
                     </div>
+                </div>
+                <div className={styles.dash}>
+                    <CardSalary/>
                 </div>
             </div>
         </main>
