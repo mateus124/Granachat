@@ -33,13 +33,32 @@
     cursor: pointer;
 }
 
-.buttons button:nth-child(1) {
+.buttons button.active {
     background-color: #fff;
     padding: 5px 10px;
     border-radius: 8px;
 }
 
+.buttons button:not(.active) {
+    padding: 5px 10px;
+}
+
 .title p {
     color: hsl(0, 0%, 4%, 0.6);
     margin-top: 5px;
+}
+
+.chartWrapper {
+    animation: fadeInChart 0.35s ease;
+}
+
+@keyframes fadeInChart {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

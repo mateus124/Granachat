@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Chart } from "react-google-charts";
 import { FaChartPie } from "react-icons/fa";
 import { IoStatsChartSharp } from "react-icons/io5";
@@ -10,18 +11,27 @@ const data = [
     ["Lazer", 1200],
 ]
 
-const options = {
-    pieHole: 0.5, 
+const pieOptions = {
+    pieHole: 0.5,
     legend: { position: "right" },
     pieSliceText: "none",
     slices: {
       0: { color: "#7C3AED" },
-      1: { color: "#2E1065" }, 
-      2: { color: "#dbdbdb" }, 
+      1: { color: "#2E1065" },
+      2: { color: "#dbdbdb" },
     },
 };
 
+const barOptions = {
+    legend: { position: "none" },
+    colors: ["#7C3AED"],
+    bar: { groupWidth: "50%" },
+    vAxis: { gridlines: { color: "#f0f0f0" } },
+};
+
 const GraphCard = () => {
+    const [chartType, setChartType] = useState("PieChart");
+
     return (
         <div className={styles.card}>
             <div className={styles.header}>
@@ -30,15 +40,25 @@ const GraphCard = () => {
                     <p>Análise de gastos por categoria</p>
                 </div>
                 <div className={styles.buttons}>
-                    <button><FaChartPie/> Pizza</button>
-                    <button><IoStatsChartSharp/> Barras</button>
+                    <button
+                        className={chartType === "PieChart" ? styles.active : ""}
+                        onClick={() => setChartType("PieChart")}
+                    >
+                        <FaChartPie/> Pizza
+                    </button>
+                    <button
+                        className={chartType === "BarChart" ? styles.active : ""}
+                        onClick={() => setChartType("BarChart")}
+                    >
+                        <IoStatsChartSharp/> Barras
+                    </button>
                 </div>
             </div>
-            <div>
-                 <Chart
-                    chartType="PieChart"
+            <div key={chartType} className={styles.chartWrapper}>
+                <Chart
+                    chartType={chartType}
                     data={data}
-                    options={options}
+                    options={chartType === "PieChart" ? pieOptions : barOptions}
                     width={"100%"}
                     height={"100%"}
                 />
