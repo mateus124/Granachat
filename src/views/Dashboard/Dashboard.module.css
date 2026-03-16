@@ -29,3 +29,8 @@
     column-gap: 3vw;
     align-items: flex-start;
 }
+
+.stats {
+    padding: 0px 50px;
+    display: flex;
+}

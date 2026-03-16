@@ -25,7 +25,7 @@ const Dashboard = () => {
                     <GainCard/>
                     <TipIA/>
                 </div>
-                <div className='stats'>
+                <div className={styles.stats}>
                     <GraphicCard/>
                 </div>
             </div>
