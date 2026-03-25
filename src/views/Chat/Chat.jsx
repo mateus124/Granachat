@@ -4,6 +4,7 @@ import IndicationDay from "../../components/IndicationDay/IndicationDay";
 import Sent from "../../components/Sent/Sent";
 import Recive from "../../components/Recive/Revice";
 import styles from "./Chat.module.css";
+import SendMessage from "../../components/SendMessage/SendMessage";
 
 const Chat = () => {
   return (
@@ -15,6 +16,9 @@ const Chat = () => {
           <IndicationDay content="Hoje" />
           <Sent content="Hoje gastei 50 reais em pizza" />
           <Recive content="Entendido! Acabei de registrar esse gasto para você." />
+        </div>
+        <div>
+          <SendMessage />
         </div>
       </div>
     </main>
