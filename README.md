@@ -1,140 +1,92 @@
-# GranaChat Frontend
+# GranaChat
 
-Interface web do GranaChat, um app de controle financeiro com foco em linguagem natural.
+App de controle financeiro com foco em linguagem natural. Uma aplicação full-stack para gerenciar finanças através de chat com IA.
 
-Este repositório contém o frontend em React + Vite, responsável pelas telas de:
+## 📁 Estrutura do Projeto
 
-- Home
-- Login e cadastro
-- Dashboard financeiro
-- Chat de interacao com a IA
-- Configuracoes
-
-O backend (API) esta neste repositorio:
-
-- https://github.com/mateus124/granachat-backend
-
-## Repositorios do projeto
-
-- Frontend (este repo): https://github.com/mateus124/granachat-front
-- Backend (API): https://github.com/mateus124/granachat-backend
+```
+granachat/
+├── frontend/          # Interface web (React + Vite)
+├── backend/           # API FastAPI + PostgreSQL
+└── README.md
+```
 
 ## Stack
 
+### Frontend
 - React 19
 - Vite 7
 - React Router DOM 7
 - CSS Modules
 
-## Pre-requisitos
+### Backend
+- Python 3.11+
+- FastAPI
+- uv (gerenciador de dependências)
+- SQLAlchemy
+- PostgreSQL (Docker)
 
-Para rodar localmente com a API:
+## 📋 Pré-requisitos
 
-- Node.js 20+ (recomendado)
-- npm 10+
-- Python 3.11+ (para o backend)
-- Docker e Docker Compose (PostgreSQL do backend)
+- Node.js 20+ (frontend)
+- npm 10+ ou yarn (frontend)
+- Python 3.11+ (backend)
+- Docker & Docker Compose (banco de dados)
+- uv (gerenciador Python)
 
-## Como rodar localmente (frontend + backend)
+## 🚀 Como rodar localmente
 
-### 1) Subir o backend
-
-Em um terminal separado:
-
-```bash
-git clone https://github.com/mateus124/granachat-backend
-cd granachat-backend
-```
-
-Instale o `uv` e configure o ambiente:
+### Backend
 
 ```bash
+cd backend
+
+# Instalar uv (primeira vez)
 pip install uv
+
+# Criar e ativar ambiente virtual
 uv venv
-```
+source .venv/bin/activate   # Linux / Mac
+# .venv\Scripts\activate    # Windows
 
-Ative o ambiente virtual:
-
-Linux/Mac:
-
-```bash
-source .venv/bin/activate
-```
-
-Windows (PowerShell):
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Instale dependencias e configure variaveis:
-
-```bash
+# Instalar dependências
 uv sync
+
+# Configurar .env (copiar de .env.example)
 cp .env.example .env
+
+# Iniciar banco de dados Docker
+docker-compose up -d
+
+# Rodar migrations e servidor
+# (veja instruções em backend/README.md)
 ```
 
-No Windows PowerShell, voce tambem pode usar:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Suba o banco e rode a API:
+### Frontend
 
 ```bash
-docker compose up -d
-fastapi dev app/main.py
-```
+cd frontend
 
-API disponivel em:
-
-- http://127.0.0.1:8000
-- Swagger: http://127.0.0.1:8000/docs
-
-### 2) Configurar e rodar o frontend
-
-Em outro terminal:
-
-```bash
-git clone https://github.com/mateus124/granachat-front
-cd granachat-front
+# Instalar dependências
 npm install
-```
 
-Crie um arquivo `.env` na raiz do frontend com:
-
-```env
-VITE_API_URL=http://127.0.0.1:8000
-```
-
-Inicie o projeto:
-
-```bash
+# Rodar servidor de desenvolvimento
 npm run dev
+
+# URL: http://localhost:5173
 ```
 
-Frontend disponivel em:
+## 📝 Documentação
 
-- http://localhost:5173
+- [Frontend README](frontend/README.md)
+- [Backend README](backend/README.md)
 
-## Scripts disponiveis
+## 👨‍💻 Desenvolvimento
 
-- `npm run dev`: inicia o servidor de desenvolvimento
-- `npm run build`: gera build de producao
-- `npm run preview`: sobe preview do build
-- `npm run lint`: roda o ESLint
+Para mais detalhes sobre setup, migrations, estrutura de banco de dados e endpoints da API, consulte os READMEs específicos em cada pasta.
 
-## Estrutura principal
+---
 
-```text
-src/
-	components/   # componentes reutilizaveis
-	views/        # paginas (Home, Login, Dashboard, etc)
-	App.jsx       # rotas da aplicacao
-```
-
-## Status atual
-
-- Fluxo de autenticacao integrado ao backend via `fetch`
-- Demais telas com estrutura visual pronta para evolucao de integracoes
+**Repositórios GitHub (antes da consolidação):**
+- Frontend: https://github.com/mateus124/granachat-front
+- Backend: https://github.com/mateus124/granachat-backend
