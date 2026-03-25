@@ -5,6 +5,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { MdOutlineChat } from "react-icons/md";
 import { IoIosSettings } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
+import { getCurrentUser } from '../../services/authService';
 import styles from './Menu.module.css';
 
 const MENU_COLLAPSED_STORAGE_KEY = 'granachat-menu-collapsed';
@@ -16,6 +17,10 @@ const Menu = () => {
         return savedValue === 'true';
     });
     const [isCompactScreen, setIsCompactScreen] = useState(() => window.innerWidth <= COLLAPSE_BREAKPOINT);
+    const [profile, setProfile] = useState({
+        nome: 'Usuário',
+        email: 'Sem e-mail',
+    });
 
     const isMenuCollapsed = collapsed || isCompactScreen;
 
@@ -37,6 +42,25 @@ const Menu = () => {
     useEffect(() => {
         localStorage.setItem(MENU_COLLAPSED_STORAGE_KEY, String(collapsed));
     }, [collapsed]);
+
+    useEffect(() => {
+        const loadProfile = async () => {
+            try {
+                const user = await getCurrentUser();
+                setProfile({
+                    nome: user?.nome || 'Usuário',
+                    email: user?.email || 'Sem e-mail',
+                });
+            } catch {
+                setProfile({
+                    nome: 'Usuário',
+                    email: 'Sem e-mail',
+                });
+            }
+        };
+
+        loadProfile();
+    }, []);
 
     return (
         <div className={`${styles.menu} ${isMenuCollapsed ? styles.collapsed : ''}`}>
@@ -80,8 +104,8 @@ const Menu = () => {
                     <img src="ace.avif" alt="Foto de perfil" />
                 </div>
                 <div className={styles.profileInfo}>
-                    <p className={styles.profiletitle}>Ricardo Silva</p>
-                    <p className={styles.profiledesc}>Freelancer</p>
+                    <p className={styles.profiletitle}>{profile.nome}</p>
+                    <p className={styles.profiledesc}>{profile.email}</p>
                 </div>
             </div>
         </div>

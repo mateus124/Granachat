@@ -17,7 +17,7 @@ const Chat = () => {
           <Sent content="Hoje gastei 50 reais em pizza" />
           <Recive content="Entendido! Acabei de registrar esse gasto para você." />
         </div>
-        <div>
+        <div className={styles.sendMessageContainer}>
           <SendMessage />
         </div>
       </div>
