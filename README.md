@@ -58,8 +58,8 @@ cp .env.example .env
 # Iniciar banco de dados Docker
 docker-compose up -d
 
-# Rodar migrations e servidor
-# (veja instruções em backend/README.md)
+# Rodar servidor
+fastapi dev app/main.py
 ```
 
 ### Frontend
@@ -78,15 +78,95 @@ npm run dev
 
 ## 📝 Documentação
 
-- [Frontend README](frontend/README.md)
-- [Backend README](backend/README.md)
+### Backend API
 
-## 👨‍💻 Desenvolvimento
+A API está disponível em `http://localhost:8000` com documentação interativa em:
+- **Swagger UI**: `http://localhost:8000/docs`
+- **ReDoc**: `http://localhost:8000/redoc`
 
-Para mais detalhes sobre setup, migrations, estrutura de banco de dados e endpoints da API, consulte os READMEs específicos em cada pasta.
+#### Endpoints principais
+- `POST /api/auth/login` - Autenticação
+- `POST /api/auth/register` - Registro
+- `POST /api/chat` - Enviar mensagem para o chat
+- `GET /api/chat/history` - Histórico de conversa
+- `GET /api/summary` - Resumo financeiro
 
----
+### Estrutura do Backend
 
-**Repositórios GitHub (antes da consolidação):**
-- Frontend: https://github.com/mateus124/granachat-front
-- Backend: https://github.com/mateus124/granachat-backend
+```
+backend/
+├── app/
+│   ├── main.py              # Entrada da aplicação
+│   ├── api/
+│   │   ├── auth.py         # Endpoints de autenticação
+│   │   ├── chat.py         # Endpoints de chat
+│   │   └── summary.py      # Endpoints de resumos
+│   ├── core/
+│   │   ├── security.py     # Autenticação e segurança
+│   │   ├── deps.py         # Dependências
+│   │   └── parser.py       # Parser de linguagem natural
+│   ├── db/
+│   │   ├── base.py         # Configuração de DB
+│   │   ├── session.py      # Sessão de banco
+│   │   └── deps.py         # Dependências de DB
+│   ├── models/             # Modelos SQLAlchemy
+│   └── schemas/            # Schemas Pydantic
+├── pyproject.toml          # Dependências Python
+└── docker-compose.yml      # Configuração PostgreSQL
+```
+
+### Estrutura do Frontend
+
+```
+frontend/
+├── src/
+│   ├── components/         # Componentes reutilizáveis
+│   ├── views/             # Páginas/Views
+│   ├── App.jsx            # Componente raiz
+│   ├── main.jsx           # Entrada
+│   └── index.css           # Estilos globais
+├── vite.config.js         # Configuração Vite
+└── package.json           # Dependências Node
+```
+
+### Variáveis de Ambiente
+
+#### Backend (.env)
+```
+DATABASE_URL=postgresql://user:password@localhost:5432/granachat
+SECRET_KEY=sua-chave-secreta-aqui
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
+
+#### Frontend (.env, se necessário)
+```
+VITE_API_URL=http://localhost:8000/api
+```
+
+### Scripts Disponíveis
+
+#### Backend
+```bash
+uv sync              # Instalar dependências
+fastapi dev          # Rodar em modo desenvolvimento
+```
+
+#### Frontend
+```bash
+npm run dev          # Rodar em desenvolvimento
+npm run build        # Build para produção
+npm run lint         # Verificar lint
+npm run preview      # Preview de produção local
+```
+
+## 🤝 Contribuição
+
+1. Crie uma branch (`git checkout -b feature/AmazingFeature`)
+2. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+3. Push para a branch (`git push origin feature/AmazingFeature`)
+4. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
